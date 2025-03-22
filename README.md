@@ -1,25 +1,71 @@
-# marvel-api-nicosek
-Un projet API Express.js généré avec *express-new*.
+# 🚀 Marvel API Backend (Express.js)
 
-## 🚀 Lancer le projet
+Backend Node.js sécurisé et modulaire pour une application Marvel React, avec :
 
-1. Installer les dépendances :
-   ```sh
-   npm install
-   ```
+- Proxy de l'API Marvel du Réacteur (cachée côté client)
+- Authentification JWT (signup/login)
+- Système de favoris (personnages ou comics), liés à chaque utilisateur
+- Middleware d'autorisation basé sur des policies
+- Architecture MVC propre (routes/controllers/models)
+- Stack Express.js + MongoDB
 
-2. Configurer l'environnement :
-   - Modifier le fichier `.env` selon votre setup.
+---
 
-3. Démarrer le serveur :
-   ```sh
-   npm start
-   ```
+## 🛠 Stack technique
 
-## 📌 Structure
+- Node.js / Express.js
+- MongoDB (via Mongoose)
+- JWT pour l’auth
+- GitHub CLI (`gh`) pour la gestion du repo
+- Architecture RESTful propre, sécurisée
 
-- **config/** : Connexion MongoDB
-- **src/controllers/** : Logique des routes
-- **src/models/** : Modèles Mongoose
-- **src/routes/** : Définition des routes
-- **src/middlewares/** : Middlewares Express
+---
+
+## ⚡ Quickstart
+
+\`\`\`bash
+git clone https://github.com/nicosek/marvel-api-nicosek.git
+cd marvel-api-nicosek
+
+cp .env.example .env # configure tes variables (clé JWT, MongoDB, clé Marvel)
+npm install
+
+npm run dev # ou nodemon src/index.js
+\`\`\`
+
+---
+
+## 📦 Endpoints principaux
+
+\`\`\`http
+POST /api/auth/signup # Création d’un compte  
+POST /api/auth/login # Authentification  
+GET /api/marvel/characters # Proxy vers l’API Marvel (persos)  
+GET /api/marvel/comics # Proxy vers l’API Marvel (comics)  
+GET /api/favorites # Liste des favoris du user (auth + policy)  
+POST /api/favorites # Ajout d’un favori  
+DELETE /api/favorites/:id # Suppression d’un favori (auth + owner)  
+\`\`\`
+
+---
+
+## 🔐 Exemple `.env`
+
+\`\`\`env
+PORT=3000
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/marvel
+JWT_SECRET=un_secret_de_ouf
+MARVEL_API_KEY=ta_clef_du_reacteur
+\`\`\`
+
+---
+
+## ✨ À venir
+
+- Déploiement sur Northflank
+- Frontend React + gestion des favoris animée
+- Auth + favoris côté client
+
+---
+
+> Fait avec ❤️ par [@nicosek](https://github.com/nicosek)
