@@ -23,12 +23,10 @@ exports.addFavorite = async (req, res) => {
 };
 
 exports.removeFavorite = async (req, res) => {
-  const { marvelId, type } = req.body;
+  const favoriteId = req.params.id;
 
   const deleted = await Favorite.findOneAndDelete({
-    user: req.user._id,
-    marvelId,
-    type,
+    _id: favoriteId,
   });
 
   if (!deleted) {
