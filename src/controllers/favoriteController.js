@@ -25,10 +25,6 @@ exports.addFavorite = async (req, res) => {
 exports.removeFavorite = async (req, res) => {
   const { marvelId, type } = req.body;
 
-  if (!marvelId || !type) {
-    throw new BadRequestError("Both marvelId and type are required");
-  }
-
   const deleted = await Favorite.findOneAndDelete({
     user: req.user._id,
     marvelId,
